@@ -1,5 +1,5 @@
-import discord
-from discord.ext import menus
+import hashcord
+from hashcord.ext import menus
 
 
 class ViewMenu(menus.Menu):
@@ -31,9 +31,9 @@ class ViewMenu(menus.Menu):
 
             return callback
 
-        view = discord.ui.View(timeout=self.timeout)
+        view = hashcord.ui.View(timeout=self.timeout)
         for i, (emoji, button) in enumerate(self.buttons.items()):
-            item = discord.ui.Button(style=discord.ButtonStyle.secondary, emoji=emoji, row=i // 5)
+            item = hashcord.ui.Button(style=hashcord.ButtonStyle.secondary, emoji=emoji, row=i // 5)
             item.callback = make_callback(button)
             view.add_item(item)
 
@@ -49,7 +49,7 @@ class ViewMenu(menus.Menu):
                     self.buttons[button.emoji] = button
                     try:
                         await self.message.edit(view=self.build_view())
-                    except discord.HTTPException:
+                    except hashcord.HTTPException:
                         raise
                 return wrapped()
 
@@ -66,7 +66,7 @@ class ViewMenu(menus.Menu):
                     self.buttons.pop(emoji, None)
                     try:
                         await self.message.edit(view=self.build_view())
-                    except discord.HTTPException:
+                    except hashcord.HTTPException:
                         raise
                 return wrapped()
 
@@ -82,7 +82,7 @@ class ViewMenu(menus.Menu):
                 async def wrapped():
                     try:
                         await self.message.edit(view=None)
-                    except discord.HTTPException:
+                    except hashcord.HTTPException:
                         raise
                 return wrapped()
 
