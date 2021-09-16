@@ -5,6 +5,10 @@ description = "A discord.ext.menus Menu backed by Views and Buttons instead of r
 authors = ["Oliver Ni <oliver.ni@gmail.com>"]
 license = "MIT"
 
+packages = [
+    { include = "Hashcord" }
+]
+
 [tool.poetry.dependencies]
 python = "^3.8"
 "Hashcord" = { git = "https://github.com/ExpertTutorials/Hashcord.git", branch = "master" }
