@@ -33,7 +33,7 @@ class ViewMenu(menus.Menu):
 
         view = hashcord.ui.View(timeout=self.timeout)
         for i, (emoji, button) in enumerate(self.buttons.items()):
-            item = hashcord.ui.Button(style=hashcord.ButtonStyle.green, emoji=emoji, row=i // 5)
+            item = hashcord.ui.Button(style=hashcord.ButtonStyle.green  , emoji=emoji, row=i // 5)
             item.callback = make_callback(button)
             view.add_item(item)
 
